@@ -1,0 +1,44 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: weather-kafka-demo
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+    consumer:
+      group-id: weather-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.example.weatherkafka.model"
+
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:nhom3fptct@gmail.com}
+    password: ${MAIL_PASSWORD:nguzoohimhlamvqn}
+    properties:
+      mail:
+        smtp:
+          auth: ${MAIL_SMTP_AUTH:true}
+          starttls:
+            enable: ${MAIL_SMTP_STARTTLS_ENABLE:true}
+
+app:
+  mail:
+    enabled: ${APP_MAIL_ENABLED:true}
+    from-address: ${APP_MAIL_FROM:${MAIL_USERNAME:no-reply@weather.local}}
+  weather:
+    provider: ${APP_WEATHER_PROVIDER:Open-Meteo}
+    geocoding-base-url: ${APP_WEATHER_GEOCODING_BASE_URL:https://geocoding-api.open-meteo.com}
+    forecast-base-url: ${APP_WEATHER_FORECAST_BASE_URL:https://api.open-meteo.com}
+    geocoding-language: ${APP_WEATHER_GEOCODING_LANGUAGE:en}
+    geocoding-country-code: ${APP_WEATHER_GEOCODING_COUNTRY_CODE:}
