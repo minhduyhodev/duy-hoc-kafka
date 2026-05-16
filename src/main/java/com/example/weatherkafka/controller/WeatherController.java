@@ -50,7 +50,7 @@ public class WeatherController {
         response.put("note", "Open the Spring Boot console to see consumer logs and mail status");
         response.put("recipientEmail", request.getRecipientEmail() == null ? "" : request.getRecipientEmail());
 
-        return ResponseEntity.ok(response);
+        return ResponseEntity.accepted().body(response);
     }
 
     @GetMapping("/health")

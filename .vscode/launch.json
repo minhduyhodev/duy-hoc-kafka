@@ -2,13 +2,14 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Spring Boot-WeatherKafkaDemoApplication<weather-kafka-demo>",
+            "name": "WeatherKafkaDemoApplication",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "com.example.weatherkafka.WeatherKafkaDemoApplication",
-            "projectName": "weather-kafka-demo",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "vmArgs": "-Dcom.sun.management.jmxremote=false -Dspring.jmx.enabled=false -Dspring.application.admin.enabled=false",
+            "envFile": "${workspaceFolder}/.env",
+            "console": "integratedTerminal"
         }
     ]
 }
