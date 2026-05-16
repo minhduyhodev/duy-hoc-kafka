@@ -1,0 +1,18 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+target/
+
+# OS
+.DS_Store
+Thumbs.db
